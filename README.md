@@ -32,7 +32,7 @@ v16.13.0
 ```bash
 #Do not run these. Left here for reference.
 #mix archive.install hex phx_new
-#mix phx.new phoenix --app app_ui --no-ecto --no-mailer
+#mix phx.new app_ui --no-ecto --no-mailer
 #mix archive.install hex nerves_bootstrap
 #mix nerves.new app_fw
 ```
