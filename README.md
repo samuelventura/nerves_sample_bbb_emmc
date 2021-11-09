@@ -40,9 +40,7 @@ v16.13.0
 ## Build Dev SD Image
 
 ```bash
-./build.sh dev bbb
-sudo fwup -aU -i app_fw/_build/bbb_dev/nerves/images/app_fw.fw -d /dev/sdd -t complete
-sync
+./build.sh sd
 #boot from this SD image by pressing S2
 #ensure usb network is available
 #check it is running from SD by looking a mount output
@@ -57,18 +55,7 @@ EOF
 ## Build Prod eMMC Image
 
 ```bash
-./build.sh prod bbb_emmc
-#ensure usb network is available
-#transfer
-(cd app_fw/_build/bbb_emmc_prod/nerves/images/ && sftp nerves.local) << EOF
-put app_fw.fw /tmp/
-quit
-EOF
-#flash
-ssh nerves.local << EOF
-cmd "fwup -aU -i /tmp/app_fw.fw -d /dev/mmcblk1 -t complete"
-cmd "poweroff"
-EOF
+./build.sh emmc
 #boot from eMMC image by removing the SD.
 #check it is running from eMMC by looking a mount output
 #expected /dev/mmcblk1p1 on /mnt/boot
